@@ -1,0 +1,51 @@
+filters:
+  and:
+    - categories.contains(link("Decisions"))
+    - '!file.name.contains("Template")'
+properties:
+  file.name:
+    displayName: Decision
+  note.date:
+    displayName: Date
+  note.project:
+    displayName: Project
+  note.status:
+    displayName: Status
+  note.decided_by:
+    displayName: Decided by
+views:
+  - type: table
+    name: Decisions
+    order:
+      - file.name
+      - date
+      - project
+      - status
+      - decided_by
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Active
+    filters:
+      and:
+        - status == "active"
+    order:
+      - file.name
+      - date
+      - project
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Project
+    filters:
+      and:
+        - list(project).contains(this)
+    order:
+      - file.name
+      - date
+      - status
+    sort:
+      - property: date
+        direction: DESC

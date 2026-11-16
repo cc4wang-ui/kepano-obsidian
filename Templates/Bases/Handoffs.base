@@ -1,0 +1,53 @@
+filters:
+  and:
+    - categories.contains(link("Handoffs"))
+    - '!file.name.contains("Template")'
+properties:
+  file.name:
+    displayName: Handoff
+  note.date:
+    displayName: Date
+  note.project:
+    displayName: Project
+  note.relay:
+    displayName: Relay
+  note.status:
+    displayName: Status
+views:
+  - type: table
+    name: Handoffs
+    order:
+      - file.name
+      - date
+      - project
+      - relay
+      - status
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Waiting
+    filters:
+      and:
+        - status == "待接手"
+    order:
+      - file.name
+      - date
+      - project
+      - relay
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Project
+    filters:
+      and:
+        - list(project).contains(this)
+    order:
+      - file.name
+      - date
+      - relay
+      - status
+    sort:
+      - property: date
+        direction: ASC

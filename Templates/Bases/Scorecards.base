@@ -1,0 +1,62 @@
+filters:
+  and:
+    - categories.contains(link("Scorecards"))
+    - '!file.name.contains("Template")'
+properties:
+  file.name:
+    displayName: Run
+  note.date:
+    displayName: Date
+  note.project:
+    displayName: Project
+  note.grade:
+    displayName: Grade
+  note.result:
+    displayName: Result
+  note.review_rounds:
+    displayName: Review rounds
+  note.tokens:
+    displayName: Tokens
+  note.budget:
+    displayName: Budget
+views:
+  - type: table
+    name: Scorecards
+    order:
+      - file.name
+      - date
+      - project
+      - grade
+      - result
+      - review_rounds
+      - tokens
+      - budget
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Failed
+    filters:
+      and:
+        - result == "FAIL"
+    order:
+      - file.name
+      - date
+      - project
+      - review_rounds
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Project
+    filters:
+      and:
+        - list(project).contains(this)
+    order:
+      - file.name
+      - date
+      - result
+      - tokens
+    sort:
+      - property: date
+        direction: ASC
