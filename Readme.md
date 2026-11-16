@@ -18,4 +18,4 @@ See the article [How I use Obsidian](https://stephango.com/vault) on my site for
 | `[[Handoffs]]` | `Templates/Handoff Template.md` | `Templates/Bases/Handoffs.base` | session-handoff 的五段交接檔 |
 | `[[Scorecards]]` | `Templates/Scorecard Template.md` | `Templates/Bases/Scorecards.base` | 每次驗收的成績單 |
 
-目前只有分類與範本。agent 會不會自動寫進來，等 Cross 決定（見 chief-skills README「等 Cross 決定的提案」）。
+agent 會自動寫進 `Notes/`（2026-11-16 Cross 核准）。寫法在 chief-skills 的 `skills/session-handoff` §12。vault repo 必須是 private 才會寫入。
